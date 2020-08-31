@@ -1,0 +1,23 @@
+/*************** Some Important Notes To Keep In Mind Always *******************/
+
+1. If we are getting time complexity in O(nlogn) because of sorting is used or set/multiset/map/multimap is used
+   then we can reduce the time complexity by using unordered_set or unordered_map.
+
+   set/map/multiset/multimap is implemented by self balanced BST and it takes O(logn) time in each insertion.
+   unordered_set/unordered_map is implemented by hashing mechanism so, it takes O(1) time in each insertion.
+
+2. n & (n-1)  // reset the last set bit from right
+3. n & (-n)   // gets the number with only last set bit of n, rest bits are zero.
+
+4. What would be the time complexity of inserting n elements in a self balanced BST.
+   or, what would be the time complexity of inserting n elements in set/map.
+
+   we know that time complexity of single element insertion in a balanced BST is o(logn), n is the number of 
+   elements in BST at the time of insertion.
+
+So, time complexity of n elements insertion in an empty balanced BST is:
+O(log1 + log2 + log3 + log4 +..........logn)
+O(log(1*2*3*4*.....n))
+O(log(n!))
+
+

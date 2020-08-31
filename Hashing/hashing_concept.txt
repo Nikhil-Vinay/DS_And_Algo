@@ -1,0 +1,67 @@
+// Benefit of hashing over self balanced BST.
+
+1. Hashing wastes of array memory but BST doesn't waste the memory.
+2. BST gives exact O(logN) for searching, inserting and deletion
+   Hash map gives average O(1) for searching, insertion and deletion.( because of collision)
+3. BST is simple to implement, for hashing we need stablished hash library else it needs very strong hash function.
+4. Inorder of BST is already a sorted order. We can get sorted array, min/max element easily in O(1) time.
+
+// A simple hash function is - hash(i) = i % n, where n is number of elements of hash map (array)
+
+/******** Hash Collision handling mechanism ************/
+
+1. Seperate Chaining:
+   It has a list at each index. In case of collision, nodes are appended in list at same key.
+   Pros: Simple to implement.
+   Cons: wastage of memory for pointers. Worst case time complexity for searching, insertion and deletion is O(n)
+         Wastage of array memory.
+
+2. Linear Probing:
+   Hi(x) = (hash(x) + i) % n
+
+   Insertion: If any hash collision happens, it looks for next available slot as per above mentioned function. 
+   Once it finds a available slot, it places the element there.
+   Searching: If searching doesn't find the element at first key then it starts searching on the next slots by
+   above mentioned formulae and it keeps searching till it finds an empty slot or array ends up.
+   Deletion: Its a bit tricky, once an element is deleted, we just mark that cell as deleted and doesn't mark it
+   empty else searching will be effected.
+
+
+   pros: easy to implement.
+         best cache performance. (less wastage of array memory)
+         highly prone to clustering. 
+
+3. Quadratic Probing:
+   Hi(x) = (hash(x) + i^2) % n 
+   
+   Insertion: Same as linear probing.
+   Searching: Same as linear probing.
+   Deletion: Same as linear probing.
+
+   pros: Average cache performance.
+         less prone to clustering.
+
+4. Double hashing.
+
+   Hi(x) = (hash(x) + i * hash2(x)) % n
+
+   pros: No clustering.
+
+
+
+
+
+
+/************** string hashing function example ***************/
+
+size_t hashStrHash(const char *str)
+{
+    size_t f = 0, c;
+
+    while (*str) {
+        c = *str++;
+        f = (16*f + f) + (512*c - c);
+    }
+
+    return f;
+}

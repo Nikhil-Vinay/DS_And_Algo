@@ -1,0 +1,46 @@
+> Segment tree concept is used for query or updation in an array.
+> Example: arr[5] = {1, 2, 3, 4, 5}
+  updation at any index will take O(1) time.
+  Query-1: sum from index 1 to 3.
+  Query-2: sum from index 2 to 4.
+  Each query takes O(n) time.
+  If we have more number of updates and less number of queries then this method seems ok.
+
+  If we will have preprocessed prefix array. For above array = [1, 3, 6, 10, 15]
+  Query-1: sum from index 1 to 3 = prefix sum at index 3 - prefix sum at index (1-1) = 10 - 1 = 9
+
+  In this case, each query will take O(1) time.
+  but, each updation will take O(n) time.
+  If we have more number of queries and less number of updates then this method seems ok.
+
+> What if we have almost equal number of updates and query. In this case none of the above two methods are
+  efficient.
+  Here segment tree comes up which takes O(logn) time in updattion and O(logn) time in query.
+
+> Segment tree looks similar as merge sort concept.
+  Based on devide and conquer and recursion.
+
+> Concept:  arr[5] = [1, 2, 3, 4, 5]
+                               Node(0) [0-4]
+
+                     Node(1)[0-2]           Node(2)[3-4]
+
+            Node(3)[0-1]    Node(4)[2-2]   Node(5)[3-3]  Node(6)[4-4]
+
+        Node(7)[0-0]  Node(8)[1-1]
+
+  All leaf nodes are consecutive indexes of given array: leaf nodes are: 7, 8, 4, 5, 6
+  If root node starts from 0 then parent child relationship is as follows:
+  If parent is at ith index the children indexes are: (2xi+1) and (2xi+2)
+
+  Here, all nodes will have exact two children. Any binary tree which has exact two children then if number of
+  leaf nodes are n then number of non-leaf nodes will be (n-1).
+  So, total nodes in the tree will be (n+n-1) = (2n-1).
+
+> Segment tree is also represented in the form of array. If main array is of n size then corresponding segment 
+  tree will have (2n-1) size.
+
+> Segment tree is easy to form, update and query. Only it depends on what to store on the nodes. Problem varies
+  with concept of what to store on the nodes. In the above example, we are storing sum of the numbers.
+
+> Segment tree formation takes O(n) time and update and query takes O(logn) time.

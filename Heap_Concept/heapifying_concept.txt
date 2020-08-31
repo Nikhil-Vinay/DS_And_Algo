@@ -1,0 +1,21 @@
+Qn. How an array of size n is heapified and why its time complexity is O(n) instead of O(nlogn) ?
+==================================================================================================
+
+We know all heap is complete binary tree. If we consider root node is at index 0 then each parent has two childrei - (2i+1) and (2i+2).
+if child is at index i then paret will be there at (i-1)/2.
+
+Note: we insert always at last index of an heap and start balancing from bottom to top. We can repeat it for all n numbers in array but it is not efficient.
+
+We will start heapifying from first non leaf element at (n-1)/2 and will heapify from index (n-1)/2 to 0 in top-down approach.
+
+If we will look closely, suppose tree has four level [ root at level = 4(1 element), level-2 (2 element),
+level-1 (4 element), level-0 (0-8 elements, max 8 elementS)
+
+> 8 elements at level-0 are leaf nodes and not heapified.
+> 4 elements at level 1 traveles height 1
+> 2 elements at level 2 travels height 2
+> 1 element at root only tarvels full height of tree.
+
+> Height of a complete binary tree = ceil(log2(N+1)) – 1.
+
+After deriving the formulae, it comes in last as harmonic progression and it deduce time complexity of heapifying and array as O(n). 

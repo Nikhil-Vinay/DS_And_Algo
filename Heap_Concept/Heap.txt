@@ -1,0 +1,112 @@
+What is full binary tree and complete binary tree.
+==================================================
+Full Binary Tree:
+---------------- 
+Its a tree which has all the levels complete and each node has two children except leaf node.
+Number of node in complete binry tree : 2^(number of levels) - 1.
+
+Complete Binary Tree:
+--------------------
+Its a tree which is complete binary tree till second last level and there is no empty node from left to right at
+last level.
+
+Note: Ever full binary tree is complete binary tree bu every complete binary tree is not full binary tree.
+
+In another words, If tree is converted in array as ith childs are (2*i) and (2*i + 1) then there should not be
+any empty index between two elements in the array.
+
+Note: A full and complete binary tree has always log(N) height. N is total number of elements.
+
+Note: This concept is very useful to understand all heap concepts.
+
+What is Heap:
+=============
+
+Heap is an array representation of a complete binary tree. Element at index 0 is the root node of tree and each
+node(at index i) has children at indexes - (2*i) and (2*i + 1)
+
+Max heap: Each node is greater or equal to its children. So, root node is the biggest of nodes.
+Min heap: Each node is less or equal to its children. So, root node is the least of nodes.
+
+If a children is at index i then its parent index will be (i-1)/2.
+
+Note: For understanding, start from last index. 
+
+Insertion in Heap:
+-----------------
+
+Suppose max heap array is: 60 40 50 20 30
+We need to insert 70, and we try to insert from top and balancing the heap then it can lead to make the tree
+not complete because every node has two children smaller than that but not in order, two children can be in any
+order [big-left, small-right] or [big-right, small-left].
+Once the tree will become un-incomplete then it wont exist any more heap. A heap must be a complete binary tree.
+
+So, insertion of any element must happen in bootom up approach.
+1. insert the new element at last of array. It will make sure new element is getting stored (filling the tree) in
+   complete binary tree fashion.
+   60 40 50 20 30 | 70
+2. Start balancing by shifting the new node from shifting to top from bottom.
+   60 40 70 20 30  50 (70 is swapped by its parent node 50 because its bigger than parent)
+   70 40 60 20 30  50 (70 is swapped by its parent 60 because its still bigger than parent)
+
+Note: Insertion must happen as insert the new node in last then balance the tree by moving the tree bottom to up.
+      Since a complete binary tree has logN height so, heap insertion cost id logN.
+
+
+Deletion In Heap:
+----------------
+
+Its heap fundamental as deletion always happen of root node means element at index at 0.
+Suppose max heap array is: 60 40 50 20 30
+If we need to delete one element from this heap then 60 will come out from the heap but we need to fill up
+0th index.
+
+Deletion always happen from top and balancing is done with top-to-down approach.
+
+60 40 50 20 30 [Max heap , delete one element , means delete 60]
+50 40 60 20 30 [two children of 0th index is - index 1 and index 2, swap 60 with max of children(50)]
+50 40 30 20 60 [now only one children of index 2(60) exist here as index 4 , make a swap with 60 and 30]
+
+Now heap size got decreased by 1 and heap is still complete tree and 60 is stored at 4th index which is out of
+heap size.
+
+This is how if there are n items in the heap and we'll make deletion operation n times then heap will become
+sorted. Because, always biggest element will keep gathering in last of heap and heap size will keep decreasing by
+one in each deletion and finally, heap will be sorted.
+
+This is the approach followed in heap sorting.
+
+If heap is constructed as max heap then we can sort in ascending order and if heap is constructed as min heap
+then we can sort in descending order.
+
+Heap Sort
+===========
+
+As discussed in deletion, we can sort a heapified array of n elements by n times deletion.
+So if we get a random array then two steps needed for heap sort - Heapifying the array then n times deletion.
+
+Heap Sort = (Heapify the array) + (Delete n times)  // n is total elements in array
+
+How to heapify an array
+=======================
+
+There are one simple way to heapify an array as we will start from index 1 of array start inserting tis element 
+in heap till last element. All insertion alancing will take place in bottom-up approach. 
+So n times insertion means total array heapifying cost = N * logN = NlogN
+
+This is hundred percent valid approach and correct at all but one another approach is explained down which is
+most popular and it works in top-to-down fashion so, this process is called percolate down approach.
+
+1. We need to find the parent at highest index. It means if there are n elements in the array then parent at 
+   highest index or we can say te last parent in the array will be at index (n-1)/2.
+ 
+2. We will start from index (n-1)/2 and balance it in top-to-bottom approach as we do in case of deletion.
+3. We will repeat the same from index(n-1)/2 to index 0.
+4. Finally, our array will be heapified.
+5. Total cost of this process is also NlogN.
+
+So, Total Cost of Heap sort is as below:
+
+Heap sort = (Heapify the array) + (Delete N times of heapified array)
+          =    NlogN            +           NlogN
+          =    NlogN

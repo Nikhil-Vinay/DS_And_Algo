@@ -1,0 +1,43 @@
+
+===================================================================================================================
+Find equilibirium point of an array
+===================================================================================================================
+
+There is a given array, we need to find the equilibirium index(i) of the array so that sum of all elements
+placed leftside of i will be equal sum of all elements placed rightside of the i. 
+
+Example: Array = [5,3,-2, 10, 6, 0]
+         Equilibirium index = 3  [5+3-2 = 6+0]
+
+Time complexity = O(N)
+
+===================================================================================================================
+There is a given array find max length of subarray which has equal number of 0 and 1 
+===================================================================================================================
+
+Since array contains only zero and 1 so, convert all zero to -1 then find max subarray length which has sum of all
+elements as zero.
+
+Create a prefix subarray and keep storing sum at each index in a map of sum->index.
+If sum is already present then dont store again.
+Dont store for sum zero.
+
+At whichever index we get sum as 0, we calculate subarray length having equal zero and one as cur_index - 0.
+At whichever index we get a sum which is already present in map, we calculate subarray length of having equal zero
+and one as: cur_index - index_corresponding_to_sum_in_map + 1.
+
+We keep on storing max subarray length during traversal.
+
+Time complexity = O(N) by using unordered_map.
+
+===================================================================================================================
+There are two arrays given of same length, we need to find max common span of subarray which has equal number of zero and one
+===================================================================================================================
+Both the arrays has only zero and ones.
+
+Create a third array by substracting C[i] = A[i] - B[i] for all n elements.
+Now all elements of C will be -1, 0 or 1.
+
+Find the max subarray length in C which sum of all elements as zero. Use the same method as above problem.
+
+Time complexity: O(N)

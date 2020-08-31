@@ -1,0 +1,27 @@
+1. There are N planets, each planet have different subset  of currencies - c1, c2, c3...CN.
+   Two planets can trade with each other if they have atleast one common currency. planet1 can trade with planet
+   3 if both planets have atleast one intermediate planet which will fill the gap...
+   Find out minimum new number of currency to be introduced so all planets can trade with each other.
+
+   Solution - Find out number of forest. Then answer is number of forest - 1.
+              It can be solved by BFS or DFS.
+
+2. If there are N building and some set of connection between these buildings. If building x catches fire then
+   how soon building Y will get the fire. Time to traverse one building to another is constant called 't'.
+
+   Solution: - It is beautiful example of BFS.
+
+3. BFS is very useful in finding shortest path and DFS is popular in finding any loop.
+
+4. Finding number of forest(disconnected graphs), both BFS and DFS can be used.
+
+5. http pages have some implementation as graph( every button - home, previous, next etc are nodes and have
+   a path between each other).
+
+6. LinkedIn and Facebook have good implementation graph inside to make connections. Each member is a node and 
+   connected with each other with a ranked edge. ranked edge has some weightage. Even A has direct friend B 
+   and C but edge rank can be different and edge rank is always dynamic. If A and C shares/likes/tags more posts
+   on each other then edge between A and C will have higher rank than edge between A and B.
+
+7. In networking, side routing algorithm uses graph concept. If some data need to propagate from delhi server 
+   to bangalore and it has different path then it will search the shortest routing path to reach bangalore.

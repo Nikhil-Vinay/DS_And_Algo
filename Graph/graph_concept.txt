@@ -1,0 +1,60 @@
+> Graphs can be disconnected. Each disconnected set of vertices of a graph is called components.
+> If graph has all vertices connected to each other then number of edges = n(n-1)/2.
+  So, max number of edges in graph = O(n^2)
+
+> Tree is connected, directed acyclic graph. There is only one path between two nodes in tree.
+> There could be multiple path between two nodes in a graph.
+> There can be cycle in a graph.
+> Graph can be directed, indirected, and cost can be also be associated with graph edges.
+> Number of edges in a tree v-1.
+> Minimum number of edges in a tree = v-1 (tree is also a graph)
+
+Qn: How DFS and BFS has time complexity as O(E+V)
+
+    DFS:
+    int* visited = new int[V]
+    for(int i = 0; i < V; i++) {          // O(V) (part-1)
+        visited[i] = 0;
+    }
+
+    // for a connected graph, for disconnected graph also its same (just analyze)
+    DFS(int u, int* visited) {  // it gets called once for each vertex
+       visited[u] = 1;      
+
+       for(int i =  all edges connected with u) {  // this is the mian iteration to decide time complexity
+           if(visited[i] == 0) {                   // for each edge only once it gets called from u->v
+              DFS(i, visited);                     // when will try to call for same edge from v then u will be
+           }                                       // visited that time so it wont call twice for same edge
+       }                                           // O(E) (part-2)
+    }
+
+    Note: see the explanation in the code, for loop runs for number of edges in the graph.
+          so total time complexity = part-1 time complexity  + part-2 time complexity
+                                   = O(V)                    + O(E)
+                                   = O(V+E)
+
+   Note: 1. Minimum nuber of edges in a graph = v-1 // it will become a tree (v = total number of vertices)
+         2. In worst case if all nodes are connected with each other, number of edges ~ v^2
+            Time complexity of DFS/BFS = O (V + V^2)
+         3. Time complexity varies with adjacency matrix representation and adjacency list representation.
+            Adjacency matrix has always BFS/DFS time complexity = O(V+V^2) as whether an edge has connection
+            or need to we need to traverse in all cells of matrix. In case of adjacency list, we visit only for
+            connected edges. 
+
+
+> Minimum spanning tree (Krushkal and Prim algorithm) (Both are greedy algorithm):
+  For any undirected weighted graph, create a tree by selecting edges to connect with all the vertices is called
+  spanning tree. Create a spanning tree with minimum edge accumulated weights are called minimum spanning tree.
+
+> Best way to represent a graph using STL.
+  vector<vector<int> > graph;  // adjacency list directed/undirected graph
+  vector<vector<pair<int, int> > > graph; // adjacency list of weighted directed/undirected graph 
+
+  class Node
+  {
+    public:
+    int v;
+    int weight;
+  };
+
+  vector< vector<Node> > graph;  // adjacency list of weighted directed/undirected graph

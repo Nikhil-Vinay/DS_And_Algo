@@ -1,0 +1,44 @@
+/******* Graph Concept ************************/
+> A graph can be undirected, directed or mixed (directed and undirected edges)
+> If all nodes are connected then min number of edges could be (n-1).  n is number of vertices.
+> If all nodes are connected then max number of edges could be n.c.2 (number of ways to choose 2 from n nodes).
+
+/****** Graph representation in c++ codes ******************/
+
+1. Adjacency matrix:
+   It is easier way to represent the graphs. 
+   pros:
+   We can know if an edge between two nodes in O(1) time.
+   cons:
+   If we have less number of nodes then matrix will become sparse matrix, and there will be wastage of memory.
+   To check all adjascent nodes of a node, we need to iterate through all nodes and it increases the BFS/DFS 
+   algorithm time complexity to O(N^2).
+   If nodes are represented by string or character instead of integer then this representation is not preferrable.
+
+2. Edge List:
+   This representation consists a vector of vertices and a list of pair os vertices which has a list.
+   
+   vertices = { 1,2,3,4};
+   list of edges: {(1,2), (2,4), (1,4), (4,3)}
+
+   This graph representation is also useful in many cases. Example: krushkal algo for minimum spanning tree.
+
+3. Adjacency List:
+   This representation is very popular.
+   cons:
+   To check an edge between two nodes , it takes O(N) time in worst case.
+   pros:
+   It does not take extra(unused) memory space like adjacency matrix.
+   It check all adjascent nodes of a node in O(e) time. e = number of adjascent node connected with a node.
+   If nodes are represented by string of character, this representation works fine.
+
+   // We can have vector of list as representation.
+   vector<list<int>> graph;
+
+   // best way to representaion to take less memory compared to the vector representation is using an unordered_map.
+   // unordered_map also creates accessing fast and reduce time complexity
+   // unordered_map is best suited for string or character nodes.
+   // unordered_map is also best suited for visited array representaion.
+
+   unordered_map<string, list<string> > graph;
+   unordered_map<string, bool> visited;

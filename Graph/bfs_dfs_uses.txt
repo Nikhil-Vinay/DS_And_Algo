@@ -1,0 +1,28 @@
+/********* APPLICATION OF DFS ********************************/
+
+1. Detecting Cycle In A Graph
+
+2. Path FIndig
+
+3. Topological Sorting
+   ===================
+   Topological Sorting is mainly used for scheduling jobs from the given dependencies among jobs. In computer science, applications of this type arise in instruction scheduling, ordering of formula cell evaluation when recomputing formula values in spreadsheets, logic synthesis, determining the order of compilation tasks to perform in makefiles, data serialization, and resolving symbol dependencies in linkers [2].
+
+4. Strongly Connected Graph:
+   =========================
+   A directed graph is called strongly connected if there is a path from each vertex in the graph to every other vertex. (See this for DFS based algo for finding Strongly Connected Components)
+
+5. Solving puzzles with only one solution, such as mazes.
+
+
+/**************** APPLICATION OF BFS **************************/
+
+1. Shortest Path and Minimum Spanning Tree for unweighted graph. 
+2. Path Finding.
+3. Crawlers in Search Engines.
+4. Peer to Peer Networks: In Peer to Peer Networks like BitTorrent, Breadth First Search is used to find all neighbor nodes.
+
+5. Social Networking Websites: In social networks, we can find people within a given distance ‘k’ from a person using Breadth First Search till ‘k’ levels
+
+6. Check if graph is Bipartite.
+7. Cloning a graph

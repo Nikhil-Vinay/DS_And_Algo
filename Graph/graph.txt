@@ -1,0 +1,93 @@
+/******* Graph adjacency list representation ***************/
+class Graph
+{
+  public:
+  int V;            // number of vertex
+  list<int> *elist; // edge list
+};
+
+Graph* CreateGraph(int V)
+{
+   Graph* g = new Graph();
+   g->V = V;
+   g->elist = new list<int> [V];
+   return g;
+}
+
+void AddEdge(Graph *g, int u, int v)
+{
+   g->elist[u].push_back(v);
+   g->elist[v].push_back(u);
+}
+
+Note: We can use vector or set also instead of list for edge storage.
+
+/********************************************************************/
+
+/********** Some other ways to adjacency list representation a graph ****************/
+
+map<int, set<int> > graph;
+map<int, list<int> > graph;
+map<int, vector<int> > graph;
+
+Note: We can use unordered_map and unordered_set to represent adjacency list with better time complecity.
+
+unordered_map<int, unordered_set<int> > graph;
+unordered_map<int, vector<int> > graph;
+
+Note: This is the beauty of adjacency list over adjacency matrix. Adjacency list can have any data type as key
+and value (string, int, char..etc). Adjacency matrix needs indexing (integer) for representation.
+
+/*************************************************************************************/
+
+1. Clone a graph (directed/undirected)
+   Use BFS for cloning
+
+2. Check if graph is cyclic (directed/undirected)
+   Use DFS to check for cyclic (pass current node as parent to each child so we can check one node to another
+   node conection and vice versa doesn't mean a cycle in undirected graph).
+
+3. Detect cycle in a directed graph using color code (white, grey, black) and find number of cycles.
+ 
+   DFS will be used.
+
+   WHITE : Vertex is not processed yet.  Initially all vertices are WHITE.
+
+   GRAY : Vertex is being processed (DFS for this vertex has started, but not finished which means that all 
+          descendants (ind DFS tree) of this vertex are not processed yet (or this vertex is in function
+          call stack)
+
+   BLACK : Vertex and all its descendants are processed.
+
+   While doing DFS, if we encounter an edge from current vertex to a GRAY vertex, then this edge is back 
+   edge and hence there is a cycle.
+
+4. Check if a graph is tree or not .
+
+   A graph is tree with two conditions:
+   1. If graph is connected.
+   2. If there is no cycle in the graph.
+
+   We can use BFS/DFS but DFS is preferrable.
+
+5. Find the shortest path in unweighted/equiweighted graph.
+
+   Simple BFS is used to find shortest path in unweighted graph as each edge has same weight(1).
+   > have a path array initially initialized by INT_MAX for each nodes.
+   > have a visited array to check if node is visite
+   > have a pred array to store the nodes to track the path
+
+6. Find the shortest path in weighted graph.
+
+   > Dikjshatra algorithm, using heap or set
+
+   Qn: Is set better than heap.
+       Both works, heap doesn't have update property so, needs to add duplicate record with same key.
+       heap get_min takes O(1) time and insertion takes O(logN) time.
+
+       In set we can also min is the first item (set.begin()) takes O(1) time.
+       deletion and insertion takes O(logN) time.
+
+   Qn: How heap is updated in dijkshatra algorithm?
+       Updation in heap is not allowed as heap allow only getmin and pop (deletion of min element).
+       So, we need to insert a duplicate element with same key in heap instead of updation.

@@ -1,0 +1,25 @@
+Disjoint set : It is very useful to find out the cycle in any graph.
+
+Suppose there is a undirected graph with weighted edges..
+
+We pick edges randomly or with some specific pattern (as per krushkal algorithm to find minimum spanning tree
+always smallest weight edge is picked). We assume each selected edge is a set ans find its both verctices in all
+sets exiting as pf now.
+case 1: If both vertices belong to same existing set then there is a cycle, dont pick this edge.
+case 2: If both vertces belong to two different existing set then merge the two existing sets by weight/rank and
+        pick this edge.
+        
+Merging two sets by weight: If both sets parent root has same weight then any sets parent can become parent
+of the other sets else higher weight/rank set's root will become parent of the other set's root.
+
+case 3: If only one vertex exist in any of the existing sets then, merge(union) the existing set with selected edge set.
+case 4: If both vertices dont exist in any of the exiting set then, dont perform merging(union) and keep the set
+represented by picking edge as seperate.
+
+For understanding, we can draw each set as a tree and perform merging(union)
+
+Array representation is the best way to represent the same. Initially each node will be parent of self and it will reprsent a tree of one node so, each index will have -1.
+
+For detailed explanation, please look into Abdul Bari Channel on you tube.
+
+Krushkal Algorithm of minimum spaning tree is based on this algorithm. 

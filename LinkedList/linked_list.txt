@@ -1,0 +1,5 @@
+1. How will you check if a linked list have duplicate element?
+   Note: Linked list has nodes data is not greater than 50.
+
+Sol: Traverse through linked list and set the bits corresponding to linked list node data.
+     If a bit is going to set twice means, it has duplicate data.

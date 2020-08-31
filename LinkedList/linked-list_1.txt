@@ -1,0 +1,44 @@
+/*********** Some Notes For Linked-List Representaion ************/
+
+For singly and doubly linked-list.
+ 
+Try to avoid linked-list next/prev pointer to pointing to null. If this pointer is null then make it point to the
+first node in the list. This way linked-list will become circular linked list and would be very ease to hanle.
+
+We can create que or any data structure/algo easily. This practice is used in professional coding. Though it is
+not mandatory, we can solve with help of conventional linked-list by pointing nex/prev to null also but what I
+say as this is preferrable.
+
+This is very useful in adjacency list representaion of graph also.
+
+Message Queue Implementaion:
+============================
+
+void PushMessageTail(Message **listPtr, Message *msg)
+{
+    if (*listPtr == NULL) {
+        *listPtr = msg->next = msg;
+    } else {
+        msg->next = (*listPtr)->next;
+        (*listPtr)->next = msg;
+        *listPtr = msg;
+    }
+}
+
+Message *PopMessageHead(Message **listPtr)
+{
+    Message *msg;
+
+    if (*listPtr == NULL) return NULL;
+    msg = (*listPtr)->next;
+    if (msg == *listPtr) {
+        *listPtr = NULL;
+    } else {
+        (*listPtr)->next = msg->next;
+    }
+    msg->next = NULL;
+
+    return msg;
+}
+
+

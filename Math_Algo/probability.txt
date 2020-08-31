@@ -1,0 +1,16 @@
+For a six-sided die, the expected number of throws to get each
+face at least once?
+It's (6/6)+(6/5)+(6/4)+(6/3)+(6/2)+(6/1) = 14.7.
+Logic: The chance of rolling a number you haven't yet rolled
+when you start s 1, as any number would work. Once
+you've rolled this number, your chance of rolling a number you
+haven't yet rolled is 5/6. Continuing in this manner, after
+you've rolled n dance of rolling one you
+haven't yet rolled is (6-n)/6.
+For an n-sided die the expected throws is (n/n) + (n/(n-1)) +
+(n/(n-2)) + ... + n.
+
+Better Explanation;
+It's not hard to write down the expected number of rolls for a single die. You need one roll to see the first face. After that, the probability of rolling a different number is 5/6. Therefore, on average, you expect the second face after 6/5 rolls. After that value appears, the probability of rolling a new face is 4/6, and therefore you expect the third face after 6/4 rolls. Continuing this process leads to the conclusion that the expected number of rolls before all six faces appear is
+6/6 + 6/5 + 6/4 + 6/3 + 6/2 + 6/1 = 14.7 rolls
+=============================================================================

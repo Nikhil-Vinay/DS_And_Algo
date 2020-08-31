@@ -1,0 +1,2 @@
+Qn: Find the longest palindrome in a given string.
+Soln: Solution is same of find the minimum number of character deletion to make a string palindrome.

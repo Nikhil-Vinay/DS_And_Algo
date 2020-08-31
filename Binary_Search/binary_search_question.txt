@@ -1,0 +1,107 @@
+1. Find frequency of an element or count of an element in a sorted array.
+
+   Sol: Since array is sorted so, apply binary search to solve it in O(logN) time.
+====================================================================================================
+
+2. Find number of clockwise rotation of an sorted array.
+   Ex: Input : arr[] = {15, 18, 2, 3, 6, 12}
+       Output: 2
+       Input : arr[] = {7, 9, 11, 12, 5}
+       Output: 4
+       Input: arr[] = {7, 9, 11, 12, 15};
+       Output: 0
+
+   If we take closer look at examples, we can notice that the number of rotations is equal to index of minimum elementt.
+
+   Naive Sol : O(n). Find index of minimum element.
+
+   Binary Search Sol: O(logN)
+
+   Here are also we find index of minimum element, but using Binary Search. The idea is based on below facts :
+
+   The minimum element is the only element whose previous is greater than it. If there is no previous element 
+   element, then there is no rotation (first element is minimum). We check this condition for middle element by 
+   comparing it with (mid-1)’th and (mid+1)’th elements.
+   If minimum element is not at middle (neither mid nor mid + 1), then minimum element lies in either left half 
+   or right half.
+   If middle element is smaller than last element (it means right half array is correct), then the minimum 
+   element lies in left half, else minimum element lies in right half.
+
+======================================================================================================
+
+3. Find row with maximum ones in a matrix sorted by rows.
+   Given a boolean 2D array, where each row is sorted. Find the row with the maximum number of 1s.
+   Example:
+
+   Input matrix
+   0 1 1 1
+   0 0 1 1
+   1 1 1 1  // this row has maximum 1s
+   0 0 0 0
+
+   Output: 2
+
+   Naive Sol : Count no of 1 in each row. O(mxn)
+
+   Binary Search: Go through each row, if you find mid element is 1 then all element in right half will be 1,
+   else all element in left side will be 0.
+   O(mlogn)
+
+============================================================================================================
+
+4. Search an element in a row wise and column wise sorted matrix.
+
+   https://www.geeksforgeeks.org/search-in-row-wise-and-column-wise-sorted-matrix/
+
+============================================================================================================
+
+5. Distribute N candies among K people.
+
+   Given N candies and K people. In the first turn, the first person gets 1 candy, the second gets 2 candies, 
+   and so on till K people. In the next turn, the first person gets K+1 candies, the second person gets k+2 
+   candies and so on. If the number of candies is less than the required number of candies at every turn, then 
+   the person receives the remaining number of candies.
+
+   The task is to find the total number of candies every person has at the end.
+
+   Example:
+   Input: N = 7, K = 4
+   Output: 1 2 3 1
+   At the first turn, the fourth people has to be given 4 candies, but there is only 1 left, hence he takes one 
+   only.
+
+   Input: N = 10, K = 3
+   Output: 5 2 3
+   At the second turn first one receives 4 and then we have no more candies left.
+
+   Naive SOlution: 
+   A naive approach is to iterate for every turn and distribute candies accordingly till candies are finished.
+   Time complexity: O(Number of distributions)
+
+   Better Approach:
+   A better approach is to perform every turn in O(1) by calculating sum of natural numbers till the last term 
+   of series which will be (turns*k) and subtracting the sum of natural numbers till the last term of previous 
+   series which is (turns-1)*k. Keep doing this till the sum is less than N, once it exceeds then distribute 
+   candies in the given way till possible. We call a turn completed if every person gets the desired number of 
+   candies he is to get in a turn.
+
+   https://www.geeksforgeeks.org/distribute-n-candies-among-k-people/
+
+=========================================================================================================
+
+6. Search an element in rotated sorted array.
+
+   Input arr[] = {3, 4, 5, 1, 2}
+   Element to Search = 1
+
+   SOl: We'll apply the same concept as prob-2(Find number of clockwise rotation of an sorted array.)
+
+   1. Find min index.
+   2. if element is not in min index.
+      a. if element at min-1 is greater than element at 0th index then left subarray is perfect, we can check
+         if element is in middle of oth index element and mid-1 element and act accordingly.
+         Accordingly we can call recursively on left or right half.
+      b
+
+   https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/. 
+   

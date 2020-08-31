@@ -1,0 +1,94 @@
+/********** How to solve DP problems  *****************************/
+
+What is Recursion ?
+==================
+
+Recursion is method to solve a problem in such a way that a function called with bigger problem calls itself with
+smaller problem to make solution of bigger problem.
+
+Recursion uses stack internally to store the local data.
+Base case condition is very important and mandtaory in recursion else it will infinite times and cause stackoverflow.
+Base case consists of the smallest problem of same nature.
+
+A > B > C > 0(Base Case) [In terms of problem size]
+
+Function(A) ->calls-> Function(B) ->calls-> Function(C) ->calls-> Function(0)(returns from here with base solution)
+Solution A  <-retrn<- Solution B  <-retrn<- Solution C  <-retrn<- Solution 0 (base case solution)                                  
+We see here every time function calls with a smaller problem of same nature to itself to get the solution. Once it
+gets solution of smaller problem. It does so arithmetic on smaller problem to make solution of own bigger problem.
+
+Dynamic Programing (DP):
+=======================
+
+Usually we see in many recursive solutions, there is some overlapping. Overlapping means same subproblem is solved
+many times and eventually it increases the time complexity in many ways. Some times it increases time complexity to
+exponential even.
+
+Ex: fibonacci series is ver good and basic example of this. We can dry run and draw the call tree. It clearly shows
+hoe same subproblem is solved again and again.
+
+To get rid of this overlapping problem, DP is introduced. DP works on memoization. It stores the smaller problem
+solution in a table and when same subproblem is called again it simply returns the result from table instead of
+resolving the subproble. That's why this act is called memoization.
+
+1-D DP: If DP solution needs one dimensional table.
+2-D DP: if DP solution needs two dimensional table.
+
+Whether solution is 1-D DP or 2-D DP, it is decided by dp state.
+
+There are two types of DP solution appoach - 1) top down approach 2) bottom up approah
+
+Top-Down DP:
+============
+
+Top down DP is solution is fully based on recursion and is easy to implement though it has same space complexity as
+bottom up approach because it needs same kind of table to store subproblem solution results.
+
+It is easy to apply and easy to understand because it is based on recursio. We need to find base case only carefully,
+rest will be done by recursion. Once we find there is some subproblem overlap issue then need to decide dp state and
+accordingly create a table to store subproblem solutions.
+
+Bottom-Up DP:
+=============
+
+This approac is very interesting an based on iterative solution. Initially it is little tough to formulate compared
+to top-down approach but once you have top-down solution then it is easy convert bottom-up solution.
+First we take base case of top-down recursive solutio. Fill up the respective table with base case known solution
+and fill rest of the tables in bottom-up manner.
+
+Some basic tips for bottom-up solutions:
+
+for 1-D table:
+-------------
+Suppose we have a one dimensional table(table[5]) for string "ABCDE".
+First we fill table[0] or more with base condition of problem.
+When we are dealing with index i of table and try to populate table[i] then it is very important to consider that
+input string is 0 to i only at that moment. Don't think ever about full string.
+Example: For above mentioned string, if populate table[2] then that time our string is "ABC" only. (index 0 to 2)
+
+for 2-D table:
+-------------
+Suppose we have two dimensional table (table[6][5]) dealing with two strings "NIKHIL" and "VINAY".
+"NIKHIL" has 6 letters so represents rows and "VINAY" has 5 letters representing columns.
+When we deal with index(i,j) of table then it is very important to consider that string representing rows is (0 to i)
+only and string representing column is (0 to j) only.
+
+Example: For above mentioned problem, it we populate table[2][3] then at that point of time, row-wise string is "NIK"
+(index 0 to 2) and column-wise string is "VINA" (index 0 to 3).
+
+============================================================================================================
+/******* Find Number of ways and Print paths to reach at position(x2,y2) from position(x1, y1) ************/
+============================================================================================================
+
+1. Print all the paths to reach point(x2,y2) from point(x1,y1) in a grid.
+
+ Printing all path problem is not related to DP. Here, we need to explore all paths so it is typical recursion/
+ backtracking problem because we need to explore all the paths. Don't think about time complexity here.
+ Example: Rat In A Maze prob.
+
+2. Find Number of ways to reach point(x2, y2) from point(x1,y1) in agrid.
+
+  Finding number of ways is usually a DP problem to reduce time complexity else it can also be solved by recursi-
+  on/backtracking. But, better to solve it by DP. Create a recursive solution with number of ways to reach on
+  point(x2, y2) from adjacent cells.
+  It can be solved by top-down or bottom up approach easily.

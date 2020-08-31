@@ -1,0 +1,33 @@
+Tree Based DSA Problem
+======================
+
+Tree has a very good property of left subtree and right subtree.
+Most of the tree problems are solved by splitting the problem in left subtree and right subtree and finally
+join the solutions of left subtree and right subtree and root to create solution on whole tree.
+
+Ex: 
+1. Find the number of nodes in tree.
+   int NumOfNode(Node* root) {
+       if(root == NULL) {
+         return 0;
+       }
+       if(root->left == NULL && root->right == NULL) {
+          return 1;
+       }
+
+       return NumOfNode(root->left) + NumOfNode(root->right) + 1;
+   }
+
+2. Find depth of tree or distance of deepest node from root.
+
+   int DepthOfTree(Node* root) {
+      if(root == NULL) {
+        return 0;
+      }
+
+      if(root->left == NULL && root->right == NULL) {
+        return 1;
+      }
+      
+      return max(DepthOfTree(root->left), DepthOfTree(root->right)) + 1;
+   }
